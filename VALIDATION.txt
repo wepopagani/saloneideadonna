@@ -1,0 +1,15 @@
+Studio Look fotografico — verifica del 9 novembre 2026
+
+Verifiche eseguite nel browser:
+- 36 combinazioni finali: 3 tagli donna x 6 colori e 3 tagli uomo x 6 colori; tutte renderizzate correttamente.
+- Intensità al 100%, radice naturale attiva/disattiva e stato della selezione coerenti.
+- Confronto prima/dopo accessibile da tastiera, con cursore e valore aria aggiornato.
+- Visualizzazione desktop 1440 px e telefono 390 px; nessuno scorrimento orizzontale della pagina.
+- Salvataggio PNG con foto, scelta del look, intensità e indicazione del modello AI; ispezione del file esportato a piena risoluzione.
+- Mascheratura corretta per eliminare aloni sui contorni senza tingere sfondo o vestiti.
+- Trasferimento alla prenotazione di taglio, colore, radice e intensità; selezione del servizio uomo coerente.
+- Nessun errore o avviso in console durante la verifica delle 36 combinazioni.
+- Sintassi JavaScript verificata con node --check per app.js e look-studio.js.
+- Tutti i 15 riferimenti locali ad asset sono risolti.
+
+Il sito resta un prototipo: calendario e agenda salvano solo nel browser; non sono presenti backend, autenticazione admin o ricezione reale dei messaggi. Lo Studio Look usa modelli fotografici AI, non foto dei clienti, e non promette un risultato reale su capelli personali.

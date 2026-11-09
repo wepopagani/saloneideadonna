@@ -15,7 +15,7 @@ Aprire http://localhost:5183. È possibile pubblicare la cartella `dist` su un h
 ## Funzionalità
 
 - Layout responsive e animazioni con rispetto di `prefers-reduced-motion`.
-- Studio look donna/uomo: tre stili per categoria, sei colori, anteprima SVG e trasferimento della scelta alla prenotazione.
+- Studio Look fotografico donna/uomo: tre stili per categoria, sei colori, intensità regolabile, radice naturale, confronto prima/dopo accessibile da tastiera, ingrandimento e salvataggio PNG del look. La scelta completa passa alla prenotazione.
 - Servizi, galleria ingrandibile, sezione MI Nails, contatti e indicazioni stradali.
 - Prenotazione in tre passi, disponibilità simulate, date trascorse e giorni di chiusura disabilitati, durata del servizio e sovrapposizioni rispettate, salvataggio locale e download iCalendar.
 - Agenda demo accessibile dal footer: elenco, conferma, annullamento, eliminazione ed esportazione JSON.
@@ -31,6 +31,8 @@ Le durate sono indicative e non sono un listino. Non sono state riprese le promo
 ## Immagini e font
 
 I file originali allegati non erano più disponibili ai percorsi indicati. Le tre immagini della demo sono ricostruzioni/ripuliture realizzate con il tool integrato ImageGen a partire dagli screenshot visibili in chat. Possono differire dalle foto originali e dovranno essere sostituite con i file originali prima della versione definitiva. I prompt sono conservati in `asset-prompts.txt`.
+
+Lo Studio Look usa sei ritratti di modelli adulti immaginari generati con ImageGen: non sono clienti o risultati reali del salone. I file sorgente rimangono immutati. Il browser applica una simulazione locale del colore con maschere per ciascun taglio, separazione cromatica dallo sfondo, protezione della cute e gradazione che conserva ciocche, ombre e riflessi. Non è un servizio di prova su una foto personale e non promette il risultato sui capelli del cliente. Prompt in `look-asset-prompts.txt`.
 
 I font DM Sans e Italiana sono inclusi localmente, senza richieste a Google Fonts durante la visita. Licenze SIL Open Font License in `licenses/`.
 

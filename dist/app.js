@@ -20,59 +20,6 @@ if ('IntersectionObserver' in window) {
 }
 $$('.service-row').forEach(detail => detail.addEventListener('toggle', () => { if (detail.open) $$('.service-row').forEach(other => { if (other !== detail) other.open = false; }); }));
 
-const COLORS = [
-  {name:'Espresso',base:'#39291f',light:'#785744',dark:'#1c1615',note:'PROFONDO, DECISO, SEMPLICEMENTE TU.'},
-  {name:'Cioccolato',base:'#69432f',light:'#b38a62',dark:'#332117',note:'CALDO, NATURALE, SENZA TEMPO.'},
-  {name:'Caramello',base:'#b17b4c',light:'#e7bc80',dark:'#69402b',note:'UN TOCCO DI LUCE, TUTTO TUO.'},
-  {name:'Biondo miele',base:'#d2ae70',light:'#f6dfad',dark:'#8f673f',note:'RIFLESSI DORATI, VOGLIA DI SOLE.'},
-  {name:'Rame',base:'#a34d2d',light:'#df9a63',dark:'#602d22',note:'LA SFUMATURA DI CHI AMA OSARE.'},
-  {name:'Rosa cipria',base:'#bc8590',light:'#edc4c6',dark:'#704550',note:'UN’IDEA DIVERSA, DELICATAMENTE TUA.'}
-];
-const STYLE_OPTIONS = {donna:[{id:'waves',name:'Onde morbide'},{id:'straight',name:'Liscio setoso'},{id:'bob',name:'Caschetto'}],uomo:[{id:'natural',name:'Naturale'},{id:'texture',name:'Texturizzato'},{id:'short',name:'Corto classico'}]};
-let look = {gender:'donna',style:'waves',color:2};
-function hairSVG(style, colorIndex, id, mini = false) {
-  const c = COLORS[colorIndex];
-  const male = ['natural','texture','short'].includes(style);
-  const bob = style === 'bob';
-  const waves = style === 'waves';
-  let outline = male ? 'M80 154 C64 113 75 62 115 48 C147 31 198 42 219 73 C234 98 228 135 221 154 L208 151 L204 115 C180 126 137 99 99 122 L94 155Z' : bob ? 'M150 40 C88 40 59 79 61 143 C63 181 45 213 57 239 Q102 265 150 249 Q199 266 244 239 C256 214 236 179 239 139 C242 77 213 40 150 40Z' : waves ? 'M150 39 C91 38 63 77 62 128 C59 171 41 194 55 226 C66 255 41 275 58 300 C79 322 65 335 82 345 Q112 353 137 337 Q166 358 189 342 Q229 355 243 323 C253 300 230 286 246 256 C263 226 239 205 241 172 C249 99 221 41 150 39Z' : 'M150 39 C86 39 61 82 61 137 L57 332 Q101 348 150 333 Q199 349 242 332 L239 137 C239 79 211 39 150 39Z';
-  let strands = '';
-  const count = mini ? 24 : 88;
-  for(let i=0;i<count;i++) {
-    const t = i/(count-1), x = 60 + t*180;
-    const startY=45+Math.pow(Math.abs(t-.5)*2,2)*84;
-    let d;
-    if (male) {
-      const shift = style === 'texture' ? Math.sin(i*2.1)*13 : style === 'short' ? 0 : Math.sin(i*.5)*6;
-      d=`M${x} 150 C${x-18} 111 ${x+20+shift} 64 ${149+(t-.5)*48} 45`;
-    } else if(waves) {
-      const a=11+Math.sin(t*8)*7, end=343+Math.sin(t*17)*12;
-      d=`M${x} ${startY} C${x-20} 110 ${x+22} 125 ${x} 166 C${x-a*2} 201 ${x-a} 216 ${x+8} 237 C${x+a*2} 272 ${x+a} 287 ${x-8} 312 Q${x-20} 333 ${x} ${end}`;
-    } else if(bob) d=`M${x} ${startY} C${x-13} 114 ${x+10} 177 ${x} 219 Q${x-4} 240 ${x+(t-.5)*9} 258`;
-    else d=`M${x} ${startY} C${x-10} 130 ${x+9} 220 ${x+(t-.5)*7} ${339+Math.sin(t*8)*6}`;
-    const col = i%4===0?c.light:i%3===0?c.dark:c.base;
-    strands+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${mini?1.5:(i%4===0?1.1:1.8)}" opacity="${i%4===0?.67:.56}"/>`;
-  }
-  const bust = male ? '<path d="M119 177 L117 226 Q85 229 47 258 L31 385 L269 385 L253 258 Q216 230 183 226 L181 177Z" fill="#ddbea3"/><path d="M115 226 Q150 254 185 226 L254 260 L269 385 H31 L46 260Z" fill="#342b31"/><path d="M115 225 L150 253 L185 225" stroke="#6c5c61" fill="none" stroke-width="3"/>' : '<path d="M120 180 L117 271 Q100 282 58 295 C32 306 20 345 13 395 H287 C280 345 268 306 242 295 L183 272 L180 180Z" fill="#e3c6ad"/><path d="M71 291 Q150 344 229 291 L256 311 Q278 354 287 395 H13 Q22 354 44 311Z" fill="#30282d"/><path d="M71 291 Q150 344 229 291" fill="none" stroke="#a99286" stroke-width="2"/>';
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" aria-hidden="true"><defs><linearGradient id="${id}g" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="${c.dark}"/><stop offset=".22" stop-color="${c.base}"/><stop offset=".43" stop-color="${c.light}"/><stop offset=".58" stop-color="${c.base}"/><stop offset=".82" stop-color="${c.light}"/><stop offset="1" stop-color="${c.dark}"/></linearGradient><linearGradient id="${id}root" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${c.dark}" stop-opacity=".65"/><stop offset=".6" stop-color="${c.dark}" stop-opacity="0"/></linearGradient><clipPath id="${id}clip"><path d="${outline}"/></clipPath></defs>${bust}<ellipse cx="150" cy="133" rx="62" ry="86" fill="#e3c6ad"/><path d="${outline}" fill="url(#${id}g)"/><g clip-path="url(#${id}clip)">${strands}<path d="${outline}" fill="url(#${id}root)"/></g>${!male?'<path d="M151 42 Q145 68 146 87" stroke="'+c.dark+'" fill="none" stroke-width="1.7" opacity=".6"/>':''}</svg>`;
-}
-function renderLook(animate = false) {
-  const selected = STYLE_OPTIONS[look.gender].find(s => s.id===look.style);
-  const color=COLORS[look.color];
-  $('#style-options').innerHTML = STYLE_OPTIONS[look.gender].map((s,i) => `<button class="style-choice ${s.id===look.style?'active':''}" data-style="${s.id}" aria-pressed="${s.id===look.style}">${hairSVG(s.id,look.color,'mini'+i,true)}<span>${s.name}</span></button>`).join('');
-  $('#color-options').innerHTML = COLORS.map((c,i) => `<button class="color-swatch ${i===look.color?'active':''}" style="--swatch:${c.base}" data-color="${i}" aria-label="${c.name}" title="${c.name}" aria-pressed="${i===look.color}"></button>`).join('');
-  $('#hair-model').innerHTML=hairSVG(look.style,look.color,'main');
-  $('#hair-model').setAttribute('aria-label',`Anteprima illustrata: ${selected.name}, ${color.name}`);
-  $('#color-name').textContent=color.name;
-  $('.chosen-color small').textContent=color.note;
-  $('#stage-label').innerHTML=`${selected.name} <span>+ ${color.name}</span>`;
-  $$('[data-gender]').forEach(b=>{const active=b.dataset.gender===look.gender;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
-  if(animate) { $('#hair-model').classList.remove('changing'); void $('#hair-model').offsetWidth; $('#hair-model').classList.add('changing'); }
-}
-$('#style-options').addEventListener('click', e=>{const b=e.target.closest('[data-style]');if(b){look.style=b.dataset.style;renderLook(true);}});
-$('#color-options').addEventListener('click', e=>{const b=e.target.closest('[data-color]');if(b){look.color=Number(b.dataset.color);renderLook(true);}});
-$$('[data-gender]').forEach(b=>b.addEventListener('click',()=>{look.gender=b.dataset.gender;look.style=STYLE_OPTIONS[look.gender][0].id;renderLook(true);}));
-renderLook();
 const gallery = [
  {image:'assets/straight.jpg',name:'Luce naturale',alt:'Capelli lisci con sfumature bionde naturali'},
  {image:'assets/hero.jpg',name:'Onde di luce',alt:'Onde morbide con balayage biondo e radici naturali'},
@@ -172,7 +119,7 @@ $('#booking-content').addEventListener('click', e=>{
   if(a==='ics')downloadICS(booking.record);
 });
 $$('[data-book-service]').forEach(b=>b.addEventListener('click',()=>{booking.service=b.dataset.bookService;booking.step=1;booking.date=null;booking.time=null;renderBooking();$('#prenota').scrollIntoView({behavior:'smooth'});}));
-$('#save-look').addEventListener('click',()=>{booking.look=STYLE_OPTIONS[look.gender].find(s=>s.id===look.style).name+' · '+COLORS[look.color].name;booking.service=look.gender==='uomo'?'taglio-uomo':'colore';booking.step=1;booking.date=null;booking.time=null;renderBooking();toast('La tua idea è stata aggiunta alla richiesta demo.');});
+$('#save-look').addEventListener('click',()=>{const chosen=window.ideaDonnaLook?.getSelection();if(!chosen)return;booking.look=chosen.description;booking.service=chosen.gender==='uomo'?'taglio-uomo':'colore';booking.step=1;booking.date=null;booking.time=null;renderBooking();toast('La tua idea è stata aggiunta alla richiesta demo.');});
 function downloadFile(content,type,name){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function downloadICS(r){
   const start=`${r.date.replaceAll('-','')}T${r.time.replace(':','')}00`;
@@ -184,7 +131,7 @@ function downloadICS(r){
 renderBooking();
 
 $('#privacy-open').addEventListener('click',()=>{
- $('#info-content').innerHTML='<div class="eyebrow">INFORMAZIONI SULLA DEMO</div><h2>Un po’ di chiarezza.</h2><p>Il calendario è una dimostrazione. Le richieste vengono salvate esclusivamente nella memoria locale di questo browser (localStorage): non vengono inviate al salone, a un server o a un indirizzo e-mail.</p><p>L’agenda demo, accessibile dal fondo della pagina, mostra solo le prove effettuate nello stesso browser. Non è un’area amministrativa protetta. Per le prove puoi usare dati di fantasia; dall’agenda puoi eliminare ciascuna richiesta o tutte le prove.</p><p>Le immagini sono state ricavate e ripulite con ImageGen a partire dagli screenshot forniti; possono differire dagli originali. Il configuratore mostra un’illustrazione di ispirazione, non una simulazione del risultato sui tuoi capelli.</p><p>I collegamenti a Maps, Instagram e WhatsApp aprono servizi esterni. Questo sito dimostrativo non contiene strumenti di analisi o pubblicità.</p><p>Per un appuntamento reale contatta Idea Donna al <a href="tel:+41916051359">091 605 13 59</a>. Prima della pubblicazione definitiva andranno completati backend, accessi admin e informativa privacy del salone.</p>';
+ $('#info-content').innerHTML='<div class="eyebrow">INFORMAZIONI SULLA DEMO</div><h2>Un po’ di chiarezza.</h2><p>Il calendario è una dimostrazione. Le richieste vengono salvate esclusivamente nella memoria locale di questo browser (localStorage): non vengono inviate al salone, a un server o a un indirizzo e-mail.</p><p>L’agenda demo, accessibile dal fondo della pagina, mostra solo le prove effettuate nello stesso browser. Non è un’area amministrativa protetta. Per le prove puoi usare dati di fantasia; dall’agenda puoi eliminare ciascuna richiesta o tutte le prove.</p><p>Le immagini sono state ricavate e ripulite con ImageGen a partire dagli screenshot forniti; possono differire dagli originali. Lo Studio Look usa modelli fotografici generati con AI e simula il colore sui capelli dei modelli. Non è una prova personalizzata sui tuoi capelli: il risultato reale si definisce con il salone.</p><p>I collegamenti a Maps, Instagram e WhatsApp aprono servizi esterni. Questo sito dimostrativo non contiene strumenti di analisi o pubblicità.</p><p>Per un appuntamento reale contatta Idea Donna al <a href="tel:+41916051359">091 605 13 59</a>. Prima della pubblicazione definitiva andranno completati backend, accessi admin e informativa privacy del salone.</p>';
  $('#info-dialog').showModal();
 });
 function showAgenda(){
