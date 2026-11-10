@@ -1,0 +1,32 @@
+{
+  "formato_mm": [
+    54.0,
+    86.0
+  ],
+  "centro_fronte_mm": [
+    27.0,
+    43.0
+  ],
+  "centro_retro_mm": [
+    27.0,
+    43.0
+  ],
+  "margini_fronte_mm": [
+    5.564615885416669,
+    6.490462137858074,
+    5.564615885416671,
+    6.490462137858074
+  ],
+  "margini_retro_mm": [
+    7.45597330729167,
+    5.864402083333336,
+    7.455973307291671,
+    5.8644020833333315
+  ],
+  "link_qr_nfc": "https://search.google.com/local/writereview?placeid=ChIJ5XzzeDgthEcRHHMi0GWdCNk",
+  "qr_letto_da_raster_300dpi": true,
+  "pdf_pagine": 2,
+  "pdf_colori": "CMYK; QR K100",
+  "caratteri": "tracciati vettoriali",
+  "centro_verificato": "ingombro visibile complessivo, inclusi spessori; fondo escluso"
+}

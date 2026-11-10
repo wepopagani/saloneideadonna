@@ -12,6 +12,12 @@ python3 -m http.server 5183 --directory dist
 
 Aprire http://localhost:5183. È possibile pubblicare la cartella `dist` su un hosting statico.
 
+## Badge NFC e recensioni
+
+La cartella [`badge-nfc`](badge-nfc/) contiene la grafica fronte e retro da 54 × 86 mm: PDF vettoriale CMYK, SVG con testi in tracciati, PNG a 300 dpi e anteprima. Testi bold, fondo panna e centratura verificata in X e Y. Stampare il PDF al 100%, dimensioni effettive.
+
+Il [PDF di stampa](badge-nfc/Idea-Donna-fronte-retro-54x86mm-ZC300-bold.pdf) contiene il fronte NFC nella prima pagina e il retro QR nella seconda. Il file [`Link-NFC.txt`](badge-nfc/Link-NFC.txt) riporta il link diretto alle recensioni Google, identico a quello del QR. Va scritto nel chip come record URI; la grafica non programma il chip.
+
 ## Funzionalità
 
 - Layout responsive e animazioni con rispetto di `prefers-reduced-motion`.

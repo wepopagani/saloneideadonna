@@ -1,0 +1,27 @@
+SALONE IDEA DONNA - BADGE NFC E RECENSIONI GOOGLE
+
+Formato finito: 54 x 86 mm, verticale.
+PDF di stampa: 2 pagine, pagina 1 fronte NFC, pagina 2 retro QR.
+Stampare al 100% / dimensioni effettive, senza adattare alla pagina.
+Fondo panna uniforme fino al bordo, senza cornice o crocini.
+Testi bold e ExtraBold; i caratteri sono convertiti in tracciati.
+PDF vettoriale in CMYK; QR in nero puro K100 con quiet zone di 4 moduli.
+SVG vettoriali con testo gia in tracciati. PNG a 300 dpi per anteprima e importazione.
+
+CENTRATURA
+Ogni riga e centrata sulla propria sagoma visibile, non sul solo avanzamento del font.
+Su entrambe le facce l'intera grafica visibile ha centro X=27 mm, Y=43 mm.
+Sono stati inclusi gli spessori dei tratti nel calcolo.
+Il fondo e escluso dal calcolo della centratura.
+
+COLLEGAMENTO
+Link-NFC.txt contiene l'URL diretto per scrivere una recensione a Salone Idea Donna, Agno.
+QR e chip devono usare lo stesso URL. Il disegno non programma fisicamente il chip.
+Il link e stato ricavato dal widget Google di scrittura recensioni della scheda del salone, verificata tramite nome e numero 091 605 13 59.
+La finestra recensione e stata aperta solo per verifica; nessuna recensione e stata scritta o pubblicata.
+
+CONTROLLI FINALI
+PDF verificato: 2 pagine da 54 x 86 mm, CMYK.
+QR letto dal rendering a 300 dpi e confrontato con il link NFC.
+Centratura raster verificata: scostamento massimo 0,5 pixel.
+Stampa fisica non effettuata.
