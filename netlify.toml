@@ -1,0 +1,5 @@
+# The site is already built and committed in dist/.
+[build]
+  base = "."
+  publish = "dist"
+  command = ""

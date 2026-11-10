@@ -12,6 +12,10 @@ python3 -m http.server 5183 --directory dist
 
 Aprire http://localhost:5183. È possibile pubblicare la cartella `dist` su un hosting statico.
 
+## Pubblicazione su Netlify
+
+Il file [`netlify.toml`](netlify.toml) configura `dist` come cartella pubblicata, con base nella radice del repository e nessun comando di build: i file statici sono già pronti. Netlify deve servire `dist/index.html` come pagina iniziale del dominio.
+
 ## Badge NFC e recensioni
 
 La cartella [`badge-nfc`](badge-nfc/) contiene la grafica fronte e retro da 54 × 86 mm: PDF vettoriale CMYK, SVG con testi in tracciati, PNG a 300 dpi e anteprima. Testi bold, fondo panna e centratura verificata in X e Y. Stampare il PDF al 100%, dimensioni effettive.
